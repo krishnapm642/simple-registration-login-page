@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+</head>
+<body>
+			<h1>This is home page</h1>
+				{% if user.is_authenticated %}
+				    <p>Welcome, {{ user.get_username }}. Thanks for logging in.<br />
+
+					<form method="post" action="{% url 'logout' %}">
+					{% csrf_token %}
+					<button>Logout</button>
+					</form>
+
+				    </p>
+				{% else %}
+				    <p>Welcome, new user. Please log in.
+				    <br />
+				    <a href="{% url 'login' %}">login</a> <br />
+				    <a href="{% url 'register' %}">register</a>
+				    </p>
+				{% endif %}
+
+
+</body>
+</html>
